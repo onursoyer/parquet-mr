@@ -147,10 +147,11 @@ public class MetadataUtils {
     out.format(" SZ:%d/%d/%.2f", tsize, usize, ratio);
     out.format(" VC:%d", count);
 
-    if (meta.getStatistics().genericGetMin() != null) {
+    if (!meta.getStatistics().isEmpty()) {
       out.format(" MIN: %s", meta.getStatistics().genericGetMin().toString());
       out.format(" MAX: %s", meta.getStatistics().genericGetMax().toString());
-      if (meta.getStatistics().hasNonNullValue()) {
+
+      if (!meta.getStatistics().hasNonNullValue()) {
         out.format(" NN: %d", meta.getStatistics().getNumNulls());
       }
     }
