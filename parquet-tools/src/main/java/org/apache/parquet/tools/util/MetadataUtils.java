@@ -148,12 +148,9 @@ public class MetadataUtils {
     out.format(" VC:%d", count);
 
     if (!meta.getStatistics().isEmpty()) {
-      out.format(" MIN: %s", meta.getStatistics().genericGetMin().toString());
-      out.format(" MAX: %s", meta.getStatistics().genericGetMax().toString());
-
-      if (!meta.getStatistics().hasNonNullValue()) {
-        out.format(" NN: %d", meta.getStatistics().getNumNulls());
-      }
+      out.format(" MIN:%s", meta.getStatistics().genericGetMin().toString());
+      out.format(" MAX:%s", meta.getStatistics().genericGetMax().toString());
+      out.format(" NN:%d", meta.getStatistics().getNumNulls());
     }
 
     if (!encodings.isEmpty()) out.format(" ENC:%s", encodings);
