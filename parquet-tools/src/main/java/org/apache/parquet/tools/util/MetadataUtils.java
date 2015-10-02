@@ -149,6 +149,12 @@ public class MetadataUtils {
     out.format(" FPO:%d", foff);
     out.format(" SZ:%d/%d/%.2f", tsize, usize, ratio);
     out.format(" VC:%d", count);
+
+    if (meta.getStatistics().genericGetMin() != null) {
+      out.format(" MIN: %s", meta.getStatistics().genericGetMin().toString());
+      out.format(" MAX: %s", meta.getStatistics().genericGetMax().toString());
+    }
+
     if (!encodings.isEmpty()) out.format(" ENC:%s", encodings);
     out.println();
   }
