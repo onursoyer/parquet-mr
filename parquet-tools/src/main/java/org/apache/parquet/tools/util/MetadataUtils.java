@@ -19,9 +19,6 @@
 package org.apache.parquet.tools.util;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -153,6 +150,9 @@ public class MetadataUtils {
     if (meta.getStatistics().genericGetMin() != null) {
       out.format(" MIN: %s", meta.getStatistics().genericGetMin().toString());
       out.format(" MAX: %s", meta.getStatistics().genericGetMax().toString());
+      if (meta.getStatistics().hasNonNullValue()) {
+        out.format(" NN: %d", meta.getStatistics().getNumNulls());
+      }
     }
 
     if (!encodings.isEmpty()) out.format(" ENC:%s", encodings);
